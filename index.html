@@ -1,14 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>CEORT/PDS irAE Program Timeline</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Interactive button styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    body {
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      background-color: white;
+    }
+    
+    .header {
+      background-color: #333333;
+      color: white;
+      padding: 25px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .logo-text {
+      text-align: left;
+      margin-left: 12px;
+    }
+    
+    .title {
+      margin: 0;
+      font-size: 26px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .subtitle {
+      margin: 5px 0 0 0;
+      color: #C6A94C;
+      font-size: 16px;
+    }
+    
+    .timeline-visualization {
+      padding: 30px 20px;
+      background-color: #f5f5f5;
+      position: relative;
+      height: 100px;
+      overflow: hidden;
+    }
+    
+    .timeline-line {
+      position: absolute;
+      top: 50px;
+      left: 40px;
+      right: 40px;
+      height: 4px;
+      background-color: #C6A94C;
+    }
+    
+    .timeline-point {
+      position: absolute;
+      top: 42px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #C6A94C;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      z-index: 2;
+    }
+    
+    .timeline-point:hover {
+      transform: translateX(-10px) scale(1.2);
+      box-shadow: 0 0 10px rgba(198,169,76,0.7);
+    }
+    
+    .timeline-point.active {
+      background-color: #333333;
+      border: 3px solid #C6A94C;
+    }
+    
+    .timeline-year {
+      position: absolute;
+      top: 68px;
+      transform: translateX(-50%);
+      font-weight: bold;
+      color: #333333;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-year:hover {
+      color: #C6A94C;
+    }
+    
+    .year-buttons {
+      display: flex;
+      background-color: #C6A94C;
+      overflow-x: auto;
+      position: relative;
+      z-index: 1;
+    }
+    
     .year-button {
       flex: 1;
-      padding: 10px;
+      padding: 15px 10px;
       border: none;
       background: transparent;
       font-weight: bold;
@@ -16,6 +131,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       position: relative;
+      font-size: 15px;
     }
     
     .year-button:hover {
@@ -55,31 +171,115 @@
     .year-button.active:after {
       width: 0;
     }
-
-    /* Additional responsive styles */
+    
+    .content-area {
+      padding: 30px;
+      background-color: white;
+      border-top: 4px solid #C6A94C;
+      min-height: 400px;
+    }
+    
+    .timeline-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .timeline-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .year-title {
+      color: #333333;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 24px;
+      border-bottom: 2px solid #f5f5f5;
+      padding-bottom: 10px;
+    }
+    
+    .events-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .event-item {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    
+    .event-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: #C6A94C;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    
+    .event-text {
+      margin-left: 15px;
+      line-height: 1.5;
+    }
+    
+    .event-link {
+      display: inline-block;
+      margin-top: 5px;
+      color: #C6A94C;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .event-link:hover {
+      color: #333333;
+      text-decoration: underline;
+    }
+    
     @media (max-width: 768px) {
       .year-button {
-        padding: 8px 5px;
+        padding: 10px 5px;
         font-size: 14px;
+      }
+      
+      .title {
+        font-size: 22px;
+      }
+      
+      .content-area {
+        padding: 20px;
       }
     }
 
     @media (max-width: 480px) {
       .year-button {
-        padding: 6px 3px;
+        padding: 8px 3px;
         font-size: 12px;
+      }
+      
+      .title {
+        font-size: 18px;
+      }
+      
+      .event-item {
+        margin-bottom: 15px;
+      }
+      
+      .content-area {
+        padding: 15px;
       }
     }
   </style>
 </head>
-<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f9f9f9;">
-  <!-- Timeline HTML begins here -->
-  <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-    <!-- Header -->
-    <div style="background-color: #333333; color: white; padding: 15px; text-align: center;">
-      <!-- Logo -->
-      <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
-        <svg width="50" height="50" viewBox="0 0 150 150" style="margin-right: 10px;">
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo-container">
+        <svg width="60" height="60" viewBox="0 0 150 150" style="margin-right: 10px;">
           <path d="M75,30 L87,57 L117,57 L93,74 L102,105 L75,85 L48,105 L57,74 L33,57 L63,57 Z" 
                 fill="#C6A94C" stroke="#333333" stroke-width="2"></path>
           <circle cx="75" cy="15" r="10" fill="#333333"></circle>
@@ -95,258 +295,282 @@
           <line x1="45" y1="105" x2="57" y2="85" stroke="#333333" stroke-width="2"></line>
           <line x1="45" y1="45" x2="63" y2="57" stroke="#333333" stroke-width="2"></line>
         </svg>
-        <div style="text-align: left;">
-          <span style="font-size: 16px; font-weight: bold; color: #C6A94C;">CEO</span>
-          <span style="font-size: 16px; font-weight: bold;"> ROUNDTABLE</span>
-          <div style="font-size: 12px;">ON CANCER</div>
+        <div class="logo-text">
+          <span style="font-size: 18px; font-weight: bold; color: #C6A94C;">CEO</span>
+          <span style="font-size: 18px; font-weight: bold; color: white;">ROUNDTABLE</span>
+          <div style="font-size: 14px; color: white;">ON CANCER</div>
         </div>
       </div>
-      <h1 style="margin: 0; font-size: 20px; color: white;">Transforming Cancer Immunotherapy Safety</h1>
-      <p style="margin: 5px 0 0 0; color: #C6A94C;">CEORT/PDS irAE Program: A chronology of innovation and impact</p>
+      <h1 class="title">Transforming Cancer Immunotherapy Safety</h1>
+      <p class="subtitle">CEORT/PDS irAE Program: A chronology of innovation and impact</p>
     </div>
     
-    <!-- Timeline visualization - simple horizontal line with points -->
-    <div style="padding: 20px; background-color: #f5f5f5; position: relative; height: 80px; overflow: hidden;">
-      <!-- Main timeline line -->
-      <div style="position: absolute; top: 40px; left: 30px; right: 30px; height: 4px; background-color: #C6A94C;"></div>
+    <div class="timeline-visualization">
+      <div class="timeline-line"></div>
       
-      <!-- Year points -->
-      <div style="position: absolute; top: 32px; left: 30px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
-      <div style="position: absolute; top: 55px; left: 30px; transform: translateX(-50%); font-weight: bold; color: #333333;">2017</div>
-    
-      <div style="position: absolute; top: 32px; left: 153.33333333333331px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
-      <div style="position: absolute; top: 55px; left: 153.33333333333331px; transform: translateX(-50%); font-weight: bold; color: #333333;">2018</div>
-    
-      <div style="position: absolute; top: 32px; left: 276.66666666666663px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
-      <div style="position: absolute; top: 55px; left: 276.66666666666663px; transform: translateX(-50%); font-weight: bold; color: #333333;">2019</div>
-    
-      <div style="position: absolute; top: 32px; left: 400px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
-      <div style="position: absolute; top: 55px; left: 400px; transform: translateX(-50%); font-weight: bold; color: #333333;">2020-2021</div>
-    
-      <div style="position: absolute; top: 32px; left: 523.3333333333333px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
-      <div style="position: absolute; top: 55px; left: 523.3333333333333px; transform: translateX(-50%); font-weight: bold; color: #333333;">2022-2023</div>
-    
-      <div style="position: absolute; top: 32px; left: 646.6666666666666px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
-      <div style="position: absolute; top: 55px; left: 646.6666666666666px; transform: translateX(-50%); font-weight: bold; color: #333333;">2024</div>
-    
-      <div style="position: absolute; top: 32px; left: 770px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
-      <div style="position: absolute; top: 55px; left: 770px; transform: translateX(-50%); font-weight: bold; color: #333333;">2025</div>
+      <div id="point-2017" class="timeline-point active" style="left: 40px;" onclick="showYear('2017'); setActiveButton('btn-2017');"></div>
+      <div class="timeline-year" style="left: 40px;" onclick="showYear('2017'); setActiveButton('btn-2017');">2017</div>
+      
+      <div id="point-2018" class="timeline-point" style="left: 163px;" onclick="showYear('2018'); setActiveButton('btn-2018');"></div>
+      <div class="timeline-year" style="left: 163px;" onclick="showYear('2018'); setActiveButton('btn-2018');">2018</div>
+      
+      <div id="point-2019" class="timeline-point" style="left: 286px;" onclick="showYear('2019'); setActiveButton('btn-2019');"></div>
+      <div class="timeline-year" style="left: 286px;" onclick="showYear('2019'); setActiveButton('btn-2019');">2019</div>
+      
+      <div id="point-2020-2021" class="timeline-point" style="left: 409px;" onclick="showYear('2020-2021'); setActiveButton('btn-2020-2021');"></div>
+      <div class="timeline-year" style="left: 409px;" onclick="showYear('2020-2021'); setActiveButton('btn-2020-2021');">2020-2021</div>
+      
+      <div id="point-2022-2023" class="timeline-point" style="left: 532px;" onclick="showYear('2022-2023'); setActiveButton('btn-2022-2023');"></div>
+      <div class="timeline-year" style="left: 532px;" onclick="showYear('2022-2023'); setActiveButton('btn-2022-2023');">2022-2023</div>
+      
+      <div id="point-2024" class="timeline-point" style="left: 655px;" onclick="showYear('2024'); setActiveButton('btn-2024');"></div>
+      <div class="timeline-year" style="left: 655px;" onclick="showYear('2024'); setActiveButton('btn-2024');">2024</div>
+      
+      <div id="point-2025" class="timeline-point" style="left: 778px;" onclick="showYear('2025'); setActiveButton('btn-2025');"></div>
+      <div class="timeline-year" style="left: 778px;" onclick="showYear('2025'); setActiveButton('btn-2025');">2025</div>
     </div>
     
-    <!-- Year selector buttons -->
-    <div style="display: flex; background-color: #C6A94C; overflow-x: auto;">
-      <button 
-        id="btn-2017"
-        class="year-button active"
-        onclick="showYear('2017'); setActiveButton('btn-2017');"
-      >2017</button>
-    
-      <button 
-        id="btn-2018"
-        class="year-button"
-        onclick="showYear('2018'); setActiveButton('btn-2018');"
-      >2018</button>
-    
-      <button 
-        id="btn-2019"
-        class="year-button"
-        onclick="showYear('2019'); setActiveButton('btn-2019');"
-      >2019</button>
-    
-      <button 
-        id="btn-2020-2021"
-        class="year-button"
-        onclick="showYear('2020-2021'); setActiveButton('btn-2020-2021');"
-      >2020-2021</button>
-    
-      <button 
-        id="btn-2022-2023"
-        class="year-button"
-        onclick="showYear('2022-2023'); setActiveButton('btn-2022-2023');"
-      >2022-2023</button>
-    
-      <button 
-        id="btn-2024"
-        class="year-button"
-        onclick="showYear('2024'); setActiveButton('btn-2024');"
-      >2024</button>
-    
-      <button 
-        id="btn-2025"
-        class="year-button"
-        onclick="showYear('2025'); setActiveButton('btn-2025');"
-      >2025</button>
+    <div class="year-buttons">
+      <button id="btn-2017" class="year-button active" onclick="showYear('2017');">2017</button>
+      <button id="btn-2018" class="year-button" onclick="showYear('2018');">2018</button>
+      <button id="btn-2019" class="year-button" onclick="showYear('2019');">2019</button>
+      <button id="btn-2020-2021" class="year-button" onclick="showYear('2020-2021');">2020-2021</button>
+      <button id="btn-2022-2023" class="year-button" onclick="showYear('2022-2023');">2022-2023</button>
+      <button id="btn-2024" class="year-button" onclick="showYear('2024');">2024</button>
+      <button id="btn-2025" class="year-button" onclick="showYear('2025');">2025</button>
     </div>
     
-    <!-- Content area -->
-    <div style="padding: 20px; background-color: white; border-top: 4px solid #C6A94C; min-height: 300px;">
-      <div id="content-2017" class="timeline-content" style="display: block;">
-        <h2 style="color: #333333; margin-top: 0;">2017 – Foundation and Regulatory Alignment</h2>
-        <ul style="list-style: none; padding: 0;">
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Launch of the irAE Program by CEORT's Project Data Sphere</div>
+    <div class="content-area">
+      <div id="content-2017" class="timeline-content active">
+        <h2 class="year-title">2017 – Foundation and Regulatory Alignment</h2>
+        <ul class="events-list">
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Launch of the irAE Program by CEORT's Project Data Sphere, focused on addressing immune-mediated toxicities linked to cancer immunotherapies.</p>
+            </div>
           </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">FDA Oncology Center of Excellence issues Letter of Support</div>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>FDA Oncology Center of Excellence issues Letter of Support, endorsing PDS's neutral platform and collaborative vision for irAE data sharing and safety science.</p>
+              <a href="#" class="event-link">View FDA Letter of Support</a>
+            </div>
           </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Initial scoping of irAE phenotypes and infrastructure gaps</div>
-          </li>
-        </ul>
-      </div>
-    
-      <div id="content-2018" class="timeline-content" style="display: none;">
-        <h2 style="color: #333333; margin-top: 0;">2018 – Early Clinical Focus and Field Definition</h2>
-        <ul style="list-style: none; padding: 0;">
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Immune-Related Myocarditis Workshop (Dec 2017)</div>
-          </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Consensus publication in The Oncologist (2018)</div>
-          </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Expansion of collaborative engagement with specialists</div>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Initial scoping of irAE phenotypes, adverse event signal detection, and clinical data infrastructure gaps.</p>
+            </div>
           </li>
         </ul>
       </div>
-    
-      <div id="content-2019" class="timeline-content" style="display: none;">
-        <h2 style="color: #333333; margin-top: 0;">2019 – Regulatory and Research-Driven Scaling</h2>
-        <ul style="list-style: none; padding: 0;">
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">FDA–PDS irAE Symposium</div>
+      
+      <div id="content-2018" class="timeline-content">
+        <h2 class="year-title">2018 – Early Clinical Focus and Field Definition</h2>
+        <ul class="events-list">
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Immune-Related Myocarditis Workshop (Dec 2017) hosted with support from the Parker Institute for Cancer Immunotherapy.</p>
+              <a href="#" class="event-link">Access Workshop Materials</a>
+            </div>
           </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Initiation of Delphi-based consensus processes</div>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Consensus publication in The Oncologist (2018) defines myocarditis associated with checkpoint inhibitors—first organ-specific irAE consensus output.</p>
+              <a href="#" class="event-link">Read Publication</a>
+            </div>
           </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Mapping of knowledge gaps across regulatory reporting</div>
-          </li>
-        </ul>
-      </div>
-    
-      <div id="content-2020-2021" class="timeline-content" style="display: none;">
-        <h2 style="color: #333333; margin-top: 0;">2020-2021 – Definition Development and Real-World Infrastructure</h2>
-        <ul style="list-style: none; padding: 0;">
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Structured workgroups for consensus definitions</div>
-          </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Emphasis on real-world evidence strategy</div>
-          </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">First JITC publication (2021): Neurologic irAE definitions</div>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Expansion of collaborative engagement with cardiology, neurology, and dermatology experts.</p>
+            </div>
           </li>
         </ul>
       </div>
-    
-      <div id="content-2022-2023" class="timeline-content" style="display: none;">
-        <h2 style="color: #333333; margin-top: 0;">2022-2023 – Standardization and Coding Advancement</h2>
-        <ul style="list-style: none; padding: 0;">
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Finalization of ICD-10-CM and MedDRA coding updates</div>
+      
+      <div id="content-2019" class="timeline-content">
+        <h2 class="year-title">2019 – Regulatory and Research-Driven Scaling</h2>
+        <ul class="events-list">
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>FDA–PDS irAE Symposium: focused on combination checkpoint blockade and advanced toxicity profiles.</p>
+              <a href="#" class="event-link">Symposium Proceedings</a>
+            </div>
           </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Crosswalk development for trial CRFs</div>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Initiation of Delphi-based consensus processes for multiple irAE organ systems.</p>
+            </div>
           </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Engagement with payers, clinicians, and regulators</div>
-          </li>
-        </ul>
-      </div>
-    
-      <div id="content-2024" class="timeline-content" style="display: none;">
-        <h2 style="color: #333333; margin-top: 0;">2024 – Institutionalization and Ecosystem Expansion</h2>
-        <ul style="list-style: none; padding: 0;">
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">irAE Consortium Think Tank at Cleveland Clinic</div>
-          </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Formation of ASPIRE and STORIES entities</div>
-          </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">JCO publication on AI/LLM-based irAE detection</div>
-          </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">Approval of 4 new ICD-10-CM codes for irAEs</div>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Mapping of knowledge gaps across regulatory reporting, phenotypic classification, and safety signal attribution.</p>
+            </div>
           </li>
         </ul>
       </div>
-    
-      <div id="content-2025" class="timeline-content" style="display: none;">
-        <h2 style="color: #333333; margin-top: 0;">2025 – Recognition and Formal Integration</h2>
-        <ul style="list-style: none; padding: 0;">
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">ASCO designates ASPIRE as a Community of Practice</div>
+      
+      <div id="content-2020-2021" class="timeline-content">
+        <h2 class="year-title">2020-2021 – Definition Development and Real-World Infrastructure</h2>
+        <ul class="events-list">
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Structured workgroups begin developing consensus definitions for neurologic, dermatologic, and endocrine irAEs.</p>
+            </div>
           </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">ASPIRE session at ASCO Annual Meeting (May 30)</div>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Emphasis on real-world evidence strategy, including use of structured EHR data and AI for signal detection.</p>
+              <a href="#" class="event-link">RWE Strategy Document</a>
+            </div>
           </li>
-        
-          <li style="display: flex; margin-bottom: 15px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-            <div style="margin-left: 15px;">PDS continues work on CRF harmonization, biomarkers, and AI tools development</div>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>First JITC publication (2021): Neurologic irAE definitions released.</p>
+              <a href="#" class="event-link">Access JITC Publication</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div id="content-2022-2023" class="timeline-content">
+        <h2 class="year-title">2022-2023 – Standardization and Coding Advancement</h2>
+        <ul class="events-list">
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Finalization of proposals for ICD-10-CM and MedDRA coding updates for irAEs.</p>
+              <a href="#" class="event-link">View Coding Proposals</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Crosswalk development between trial CRFs and real-world adverse event data capture.</p>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Engagement with payers, clinicians, and regulators to enable longitudinal tracking.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div id="content-2024" class="timeline-content">
+        <h2 class="year-title">2024 – Institutionalization and Ecosystem Expansion</h2>
+        <ul class="events-list">
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>March 2024: irAE Consortium Think Tank at Cleveland Clinic, bringing together 28 organizations.</p>
+              <a href="#" class="event-link">Think Tank Report</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Formation of two linked entities: ASPIRE (clinician-led scientific consortium) and STORIES (patient-led advocacy and survivorship group).</p>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>JCO publication on AI/LLM-based irAE detection.</p>
+              <a href="#" class="event-link">Access JCO Article</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>October 2024: Approval of 4 new ICD-10-CM codes for irAEs, effective Oct 1, 2024.</p>
+              <a href="#" class="event-link">View New ICD-10-CM Codes</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div id="content-2025" class="timeline-content">
+        <h2 class="year-title">2025 – Recognition and Formal Integration</h2>
+        <ul class="events-list">
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>ASCO designates ASPIRE as a Community of Practice, institutionalizing irAE science within a year-round structure.</p>
+              <a href="#" class="event-link">ASCO Announcement</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>ASPIRE Community of Practice session scheduled for May 30, 2025, 4:00–6:00 PM CT at ASCO Annual Meeting.</p>
+              <a href="#" class="event-link">Session Details</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Ongoing work on: CRF harmonization white paper, Prospective trial alignment, Biomarker validation, AI-based pharmacovigilance tools.</p>
+              <a href="#" class="event-link">Current Projects Overview</a>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <!-- Timeline HTML ends here -->
 
   <script>
     // Function to show the selected year and hide others
     function showYear(year) {
+      // Update content display
       document.querySelectorAll('.timeline-content').forEach(el => {
-        el.style.display = 'none';
+        el.classList.remove('active');
       });
-      document.getElementById('content-' + year).style.display = 'block';
-    }
-    
-    // Function to set the active button
-    function setActiveButton(buttonId) {
-      // Remove active class from all buttons
+      document.getElementById('content-' + year).classList.add('active');
+      
+      // Update buttons
       document.querySelectorAll('.year-button').forEach(btn => {
         btn.classList.remove('active');
       });
+      document.getElementById('btn-' + year).classList.add('active');
       
-      // Add active class to the clicked button
-      document.getElementById(buttonId).classList.add('active');
+      // Update timeline points
+      document.querySelectorAll('.timeline-point').forEach(point => {
+        point.classList.remove('active');
+      });
+      document.getElementById('point-' + year).classList.add('active');
     }
+    
+    // Initialize any interactive elements
+    document.addEventListener('DOMContentLoaded', function() {
+      // If needed, add any initialization code here
+    });
   </script>
 </body>
 </html>
