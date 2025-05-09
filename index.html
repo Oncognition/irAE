@@ -228,16 +228,34 @@
     
     .event-link {
       display: inline-block;
-      margin-top: 5px;
-      color: #C6A94C;
+      margin-top: 8px;
+      padding: 6px 12px;
+      color: #333333;
+      background-color: #f5f5f5;
+      border: 1px solid #C6A94C;
+      border-radius: 4px;
       text-decoration: none;
-      font-weight: bold;
+      font-size: 13px;
       transition: all 0.3s ease;
     }
     
     .event-link:hover {
-      color: #333333;
-      text-decoration: underline;
+      background-color: #C6A94C;
+      color: white;
+    }
+    
+    .footer {
+      padding: 15px;
+      background-color: #f5f5f5;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      border-top: 1px solid #ddd;
+    }
+    
+    .journal {
+      font-style: italic;
+      font-weight: bold;
     }
     
     @media (max-width: 768px) {
@@ -308,26 +326,26 @@
     <div class="timeline-visualization">
       <div class="timeline-line"></div>
       
-      <div id="point-2017" class="timeline-point active" style="left: 40px;" onclick="showYear('2017'); setActiveButton('btn-2017');"></div>
-      <div class="timeline-year" style="left: 40px;" onclick="showYear('2017'); setActiveButton('btn-2017');">2017</div>
+      <div id="point-2017" class="timeline-point active" style="left: 40px;" onclick="showYear('2017');"></div>
+      <div class="timeline-year" style="left: 40px;" onclick="showYear('2017');">2017</div>
       
-      <div id="point-2018" class="timeline-point" style="left: 163px;" onclick="showYear('2018'); setActiveButton('btn-2018');"></div>
-      <div class="timeline-year" style="left: 163px;" onclick="showYear('2018'); setActiveButton('btn-2018');">2018</div>
+      <div id="point-2018" class="timeline-point" style="left: 163px;" onclick="showYear('2018');"></div>
+      <div class="timeline-year" style="left: 163px;" onclick="showYear('2018');">2018</div>
       
-      <div id="point-2019" class="timeline-point" style="left: 286px;" onclick="showYear('2019'); setActiveButton('btn-2019');"></div>
-      <div class="timeline-year" style="left: 286px;" onclick="showYear('2019'); setActiveButton('btn-2019');">2019</div>
+      <div id="point-2019" class="timeline-point" style="left: 286px;" onclick="showYear('2019');"></div>
+      <div class="timeline-year" style="left: 286px;" onclick="showYear('2019');">2019</div>
       
-      <div id="point-2020-2021" class="timeline-point" style="left: 409px;" onclick="showYear('2020-2021'); setActiveButton('btn-2020-2021');"></div>
-      <div class="timeline-year" style="left: 409px;" onclick="showYear('2020-2021'); setActiveButton('btn-2020-2021');">2020-2021</div>
+      <div id="point-2020-2021" class="timeline-point" style="left: 409px;" onclick="showYear('2020-2021');"></div>
+      <div class="timeline-year" style="left: 409px;" onclick="showYear('2020-2021');">2020-2021</div>
       
-      <div id="point-2022-2023" class="timeline-point" style="left: 532px;" onclick="showYear('2022-2023'); setActiveButton('btn-2022-2023');"></div>
-      <div class="timeline-year" style="left: 532px;" onclick="showYear('2022-2023'); setActiveButton('btn-2022-2023');">2022-2023</div>
+      <div id="point-2022-2023" class="timeline-point" style="left: 532px;" onclick="showYear('2022-2023');"></div>
+      <div class="timeline-year" style="left: 532px;" onclick="showYear('2022-2023');">2022-2023</div>
       
-      <div id="point-2024" class="timeline-point" style="left: 655px;" onclick="showYear('2024'); setActiveButton('btn-2024');"></div>
-      <div class="timeline-year" style="left: 655px;" onclick="showYear('2024'); setActiveButton('btn-2024');">2024</div>
+      <div id="point-2024" class="timeline-point" style="left: 655px;" onclick="showYear('2024');"></div>
+      <div class="timeline-year" style="left: 655px;" onclick="showYear('2024');">2024</div>
       
-      <div id="point-2025" class="timeline-point" style="left: 778px;" onclick="showYear('2025'); setActiveButton('btn-2025');"></div>
-      <div class="timeline-year" style="left: 778px;" onclick="showYear('2025'); setActiveButton('btn-2025');">2025</div>
+      <div id="point-2025" class="timeline-point" style="left: 778px;" onclick="showYear('2025');"></div>
+      <div class="timeline-year" style="left: 778px;" onclick="showYear('2025');">2025</div>
     </div>
     
     <div class="year-buttons">
@@ -355,7 +373,6 @@
             <div class="event-dot"></div>
             <div class="event-text">
               <p>FDA Oncology Center of Excellence issues Letter of Support, endorsing PDS's neutral platform and collaborative vision for irAE data sharing and safety science.</p>
-              <a href="#" class="event-link">View FDA Letter of Support</a>
             </div>
           </li>
           
@@ -375,15 +392,14 @@
             <div class="event-dot"></div>
             <div class="event-text">
               <p>Immune-Related Myocarditis Workshop (Dec 2017) hosted with support from the Parker Institute for Cancer Immunotherapy.</p>
-              <a href="#" class="event-link">Access Workshop Materials</a>
             </div>
           </li>
           
           <li class="event-item">
             <div class="event-dot"></div>
             <div class="event-text">
-              <p>Consensus publication in The Oncologist (2018) defines myocarditis associated with checkpoint inhibitors—first organ-specific irAE consensus output.</p>
-              <a href="#" class="event-link">Read Publication</a>
+              <p>Consensus publication in <span class="journal">The Oncologist</span> (2018) defines myocarditis associated with checkpoint inhibitors—first organ-specific irAE consensus output.</p>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6156187/pdf/onco12586.pdf" target="_blank" class="event-link">Myocarditis Consensus Article</a>
             </div>
           </li>
           
@@ -403,7 +419,6 @@
             <div class="event-dot"></div>
             <div class="event-text">
               <p>FDA–PDS irAE Symposium: focused on combination checkpoint blockade and advanced toxicity profiles.</p>
-              <a href="#" class="event-link">Symposium Proceedings</a>
             </div>
           </li>
           
@@ -436,16 +451,32 @@
           <li class="event-item">
             <div class="event-dot"></div>
             <div class="event-text">
-              <p>Emphasis on real-world evidence strategy, including use of structured EHR data and AI for signal detection.</p>
-              <a href="#" class="event-link">RWE Strategy Document</a>
+              <p>Abstract presentation at <span class="journal">ASCO</span> on consensus disease definitions for the spectrum of neurologic immune related adverse events.</p>
+              <a href="https://meetings.asco.org/abstracts-presentations/196134" target="_blank" class="event-link">ASCO Abstract & Poster</a>
             </div>
           </li>
           
           <li class="event-item">
             <div class="event-dot"></div>
             <div class="event-text">
-              <p>First JITC publication (2021): Neurologic irAE definitions released.</p>
-              <a href="#" class="event-link">Access JITC Publication</a>
+              <p><span class="journal">JITC</span> call to action publication on immune-related adverse events associated with immune checkpoint inhibitors.</p>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8256840/" target="_blank" class="event-link">JITC Call to Action Article</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p><span class="journal">JITC</span> publication on neurologic irAE definitions released.</p>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8291304/" target="_blank" class="event-link">Neurologic irAE Definitions</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p><span class="journal">Science</span> article on cancer drugs' toxic side effects.</p>
+              <a href="https://www.science.org/content/article/researchers-take-aim-cancer-drugs-toxic-side-effects" target="_blank" class="event-link">Science Article</a>
             </div>
           </li>
         </ul>
@@ -458,7 +489,14 @@
             <div class="event-dot"></div>
             <div class="event-text">
               <p>Finalization of proposals for ICD-10-CM and MedDRA coding updates for irAEs.</p>
-              <a href="#" class="event-link">View Coding Proposals</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p><span class="journal">JITC</span> publication on consensus-based disease definitions for the diagnosis of dermatologic adverse events from immune checkpoint inhibitor therapy.</p>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/38599660/" target="_blank" class="event-link">Dermatologic irAE Definitions</a>
             </div>
           </li>
           
@@ -485,7 +523,6 @@
             <div class="event-dot"></div>
             <div class="event-text">
               <p>March 2024: irAE Consortium Think Tank at Cleveland Clinic, bringing together 28 organizations.</p>
-              <a href="#" class="event-link">Think Tank Report</a>
             </div>
           </li>
           
@@ -499,8 +536,23 @@
           <li class="event-item">
             <div class="event-dot"></div>
             <div class="event-text">
-              <p>JCO publication on AI/LLM-based irAE detection.</p>
-              <a href="#" class="event-link">Access JCO Article</a>
+              <p><span class="journal">JCO</span> publication on enhancing precision in detecting severe immune-related adverse events using large language models.</p>
+              <a href="https://ascopubs.org/doi/10.1200/JCO.24.00326" target="_blank" class="event-link">JCO LLM Analysis Abstract</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p><span class="journal">JITC</span> publication on consensus disease definitions for ophthalmic immune-related adverse events.</p>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11979595/" target="_blank" class="event-link">Ophthalmic irAE Definitions</a>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p><span class="journal">JITC</span> manuscript on consensus-based disease definitions for endocrine immune-related adverse events submitted.</p>
             </div>
           </li>
           
@@ -508,7 +560,6 @@
             <div class="event-dot"></div>
             <div class="event-text">
               <p>October 2024: Approval of 4 new ICD-10-CM codes for irAEs, effective Oct 1, 2024.</p>
-              <a href="#" class="event-link">View New ICD-10-CM Codes</a>
             </div>
           </li>
         </ul>
@@ -521,7 +572,6 @@
             <div class="event-dot"></div>
             <div class="event-text">
               <p>ASCO designates ASPIRE as a Community of Practice, institutionalizing irAE science within a year-round structure.</p>
-              <a href="#" class="event-link">ASCO Announcement</a>
             </div>
           </li>
           
@@ -529,19 +579,29 @@
             <div class="event-dot"></div>
             <div class="event-text">
               <p>ASPIRE Community of Practice session scheduled for May 30, 2025, 4:00–6:00 PM CT at ASCO Annual Meeting.</p>
-              <a href="#" class="event-link">Session Details</a>
             </div>
           </li>
           
           <li class="event-item">
             <div class="event-dot"></div>
             <div class="event-text">
-              <p>Ongoing work on: CRF harmonization white paper, Prospective trial alignment, Biomarker validation, AI-based pharmacovigilance tools.</p>
-              <a href="#" class="event-link">Current Projects Overview</a>
+              <p>Ongoing work on case report form harmonization for irAE standardization (manuscript under development).</p>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-dot"></div>
+            <div class="event-text">
+              <p>Additional ongoing work on: Prospective trial alignment, Biomarker validation, AI-based pharmacovigilance tools.</p>
             </div>
           </li>
         </ul>
       </div>
+    </div>
+    
+    <div class="footer">
+      <p>© 2025 CEO Roundtable on Cancer - Project Data Sphere</p>
+      <p>For more information on the irAE Program, please visit <a href="https://projectdatasphere.org" target="_blank" style="color: #C6A94C; text-decoration: none;">Project Data Sphere</a></p>
     </div>
   </div>
 
@@ -566,11 +626,6 @@
       });
       document.getElementById('point-' + year).classList.add('active');
     }
-    
-    // Initialize any interactive elements
-    document.addEventListener('DOMContentLoaded', function() {
-      // If needed, add any initialization code here
-    });
   </script>
 </body>
 </html>
