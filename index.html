@@ -4,6 +4,73 @@
   <title>CEORT/PDS irAE Program Timeline</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Interactive button styles */
+    .year-button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      font-weight: bold;
+      color: #333333;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .year-button:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .year-button:active {
+      transform: translateY(1px);
+    }
+    
+    .year-button.active {
+      background-color: #ffffff;
+      color: #C6A94C;
+      font-weight: bold;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+
+    .year-button:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: #ffffff;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .year-button:hover:after {
+      width: 80%;
+    }
+    
+    .year-button.active:after {
+      width: 0;
+    }
+
+    /* Additional responsive styles */
+    @media (max-width: 768px) {
+      .year-button {
+        padding: 8px 5px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .year-button {
+        padding: 6px 3px;
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 <body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f9f9f9;">
   <!-- Timeline HTML begins here -->
@@ -69,38 +136,45 @@
     <!-- Year selector buttons -->
     <div style="display: flex; background-color: #C6A94C; overflow-x: auto;">
       <button 
-        onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2017').style.display = 'block';"
-        style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
+        id="btn-2017"
+        class="year-button active"
+        onclick="showYear('2017'); setActiveButton('btn-2017');"
       >2017</button>
     
       <button 
-        onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2018').style.display = 'block';"
-        style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
+        id="btn-2018"
+        class="year-button"
+        onclick="showYear('2018'); setActiveButton('btn-2018');"
       >2018</button>
     
       <button 
-        onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2019').style.display = 'block';"
-        style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
+        id="btn-2019"
+        class="year-button"
+        onclick="showYear('2019'); setActiveButton('btn-2019');"
       >2019</button>
     
       <button 
-        onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2020-2021').style.display = 'block';"
-        style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
+        id="btn-2020-2021"
+        class="year-button"
+        onclick="showYear('2020-2021'); setActiveButton('btn-2020-2021');"
       >2020-2021</button>
     
       <button 
-        onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2022-2023').style.display = 'block';"
-        style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
+        id="btn-2022-2023"
+        class="year-button"
+        onclick="showYear('2022-2023'); setActiveButton('btn-2022-2023');"
       >2022-2023</button>
     
       <button 
-        onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2024').style.display = 'block';"
-        style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
+        id="btn-2024"
+        class="year-button"
+        onclick="showYear('2024'); setActiveButton('btn-2024');"
       >2024</button>
     
       <button 
-        onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2025').style.display = 'block';"
-        style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
+        id="btn-2025"
+        class="year-button"
+        onclick="showYear('2025'); setActiveButton('btn-2025');"
       >2025</button>
     </div>
     
@@ -253,5 +327,26 @@
     </div>
   </div>
   <!-- Timeline HTML ends here -->
+
+  <script>
+    // Function to show the selected year and hide others
+    function showYear(year) {
+      document.querySelectorAll('.timeline-content').forEach(el => {
+        el.style.display = 'none';
+      });
+      document.getElementById('content-' + year).style.display = 'block';
+    }
+    
+    // Function to set the active button
+    function setActiveButton(buttonId) {
+      // Remove active class from all buttons
+      document.querySelectorAll('.year-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Add active class to the clicked button
+      document.getElementById(buttonId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
