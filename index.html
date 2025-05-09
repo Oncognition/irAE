@@ -1,44 +1,49 @@
-from IPython.display import HTML
-
-timeline_html = """
-    <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-      <!-- Header -->
-      <div style="background-color: #333333; color: white; padding: 15px; text-align: center;">
-        <!-- Logo -->
-        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
-          <svg width="50" height="50" viewBox="0 0 150 150" style="margin-right: 10px;">
-            <path d="M75,30 L87,57 L117,57 L93,74 L102,105 L75,85 L48,105 L57,74 L33,57 L63,57 Z" 
-                  fill="#C6A94C" stroke="#333333" stroke-width="2"></path>
-            <circle cx="75" cy="15" r="10" fill="#333333"></circle>
-            <circle cx="115" cy="45" r="10" fill="#333333"></circle>
-            <circle cx="115" cy="105" r="10" fill="#333333"></circle>
-            <circle cx="75" cy="135" r="10" fill="#333333"></circle>
-            <circle cx="35" cy="105" r="10" fill="#333333"></circle>
-            <circle cx="35" cy="45" r="10" fill="#333333"></circle>
-            <line x1="75" y1="25" x2="75" y2="30" stroke="#333333" stroke-width="2"></line>
-            <line x1="105" y1="45" x2="87" y2="57" stroke="#333333" stroke-width="2"></line>
-            <line x1="105" y1="105" x2="93" y2="85" stroke="#333333" stroke-width="2"></line>
-            <line x1="75" y1="125" x2="75" y2="105" stroke="#333333" stroke-width="2"></line>
-            <line x1="45" y1="105" x2="57" y2="85" stroke="#333333" stroke-width="2"></line>
-            <line x1="45" y1="45" x2="63" y2="57" stroke="#333333" stroke-width="2"></line>
-          </svg>
-          <div style="text-align: left;">
-            <span style="font-size: 16px; font-weight: bold; color: #C6A94C;">CEO</span>
-            <span style="font-size: 16px; font-weight: bold;"> ROUNDTABLE</span>
-            <div style="font-size: 12px;">ON CANCER</div>
-          </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CEORT/PDS irAE Program Timeline</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f9f9f9;">
+  <!-- Timeline HTML begins here -->
+  <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+    <!-- Header -->
+    <div style="background-color: #333333; color: white; padding: 15px; text-align: center;">
+      <!-- Logo -->
+      <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+        <svg width="50" height="50" viewBox="0 0 150 150" style="margin-right: 10px;">
+          <path d="M75,30 L87,57 L117,57 L93,74 L102,105 L75,85 L48,105 L57,74 L33,57 L63,57 Z" 
+                fill="#C6A94C" stroke="#333333" stroke-width="2"></path>
+          <circle cx="75" cy="15" r="10" fill="#333333"></circle>
+          <circle cx="115" cy="45" r="10" fill="#333333"></circle>
+          <circle cx="115" cy="105" r="10" fill="#333333"></circle>
+          <circle cx="75" cy="135" r="10" fill="#333333"></circle>
+          <circle cx="35" cy="105" r="10" fill="#333333"></circle>
+          <circle cx="35" cy="45" r="10" fill="#333333"></circle>
+          <line x1="75" y1="25" x2="75" y2="30" stroke="#333333" stroke-width="2"></line>
+          <line x1="105" y1="45" x2="87" y2="57" stroke="#333333" stroke-width="2"></line>
+          <line x1="105" y1="105" x2="93" y2="85" stroke="#333333" stroke-width="2"></line>
+          <line x1="75" y1="125" x2="75" y2="105" stroke="#333333" stroke-width="2"></line>
+          <line x1="45" y1="105" x2="57" y2="85" stroke="#333333" stroke-width="2"></line>
+          <line x1="45" y1="45" x2="63" y2="57" stroke="#333333" stroke-width="2"></line>
+        </svg>
+        <div style="text-align: left;">
+          <span style="font-size: 16px; font-weight: bold; color: #C6A94C;">CEO</span>
+          <span style="font-size: 16px; font-weight: bold;"> ROUNDTABLE</span>
+          <div style="font-size: 12px;">ON CANCER</div>
         </div>
-        <h1 style="margin: 0; font-size: 20px;">CEORT/PDS irAE Program Timeline</h1>
-        <p style="margin: 5px 0 0 0; color: #C6A94C;">Tracking progress in immune-related adverse event research and standardization</p>
       </div>
+      <h1 style="margin: 0; font-size: 20px; color: white;">CEORT/PDS irAE Program Timeline</h1>
+      <p style="margin: 5px 0 0 0; color: #C6A94C;">Tracking progress in immune-related adverse event research and standardization</p>
+    </div>
+    
+    <!-- Timeline visualization - simple horizontal line with points -->
+    <div style="padding: 20px; background-color: #f5f5f5; position: relative; height: 80px; overflow: hidden;">
+      <!-- Main timeline line -->
+      <div style="position: absolute; top: 40px; left: 30px; right: 30px; height: 4px; background-color: #C6A94C;"></div>
       
-      <!-- Timeline visualization - simple horizontal line with points -->
-      <div style="padding: 20px; background-color: #f5f5f5; position: relative; height: 80px; overflow: hidden;">
-        <!-- Main timeline line -->
-        <div style="position: absolute; top: 40px; left: 30px; right: 30px; height: 4px; background-color: #C6A94C;"></div>
-        
-        <!-- Year points -->
-  
+      <!-- Year points -->
       <div style="position: absolute; top: 32px; left: 30px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
       <div style="position: absolute; top: 55px; left: 30px; transform: translateX(-50%); font-weight: bold; color: #333333;">2017</div>
     
@@ -59,12 +64,10 @@ timeline_html = """
     
       <div style="position: absolute; top: 32px; left: 770px; width: 16px; height: 16px; border-radius: 50%; background-color: #C6A94C; transform: translateX(-8px);"></div>
       <div style="position: absolute; top: 55px; left: 770px; transform: translateX(-50%); font-weight: bold; color: #333333;">2025</div>
+    </div>
     
-      </div>
-      
-      <!-- Year selector buttons -->
-      <div style="display: flex; background-color: #C6A94C; overflow-x: auto;">
-  
+    <!-- Year selector buttons -->
+    <div style="display: flex; background-color: #C6A94C; overflow-x: auto;">
       <button 
         onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2017').style.display = 'block';"
         style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
@@ -99,174 +102,156 @@ timeline_html = """
         onclick="document.querySelectorAll('.timeline-content').forEach(el => el.style.display = 'none'); document.getElementById('content-2025').style.display = 'block';"
         style="flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; color: #333333; cursor: pointer;"
       >2025</button>
+    </div>
     
-      </div>
-      
-      <!-- Content area -->
-      <div style="padding: 20px; background-color: white; border-top: 4px solid #C6A94C; min-height: 300px;">
-  
+    <!-- Content area -->
+    <div style="padding: 20px; background-color: white; border-top: 4px solid #C6A94C; min-height: 300px;">
       <div id="content-2017" class="timeline-content" style="display: block;">
         <h2 style="color: #333333; margin-top: 0;">2017 – Foundation and Regulatory Alignment</h2>
         <ul style="list-style: none; padding: 0;">
-    
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Launch of the irAE Program by CEORT's Project Data Sphere</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">FDA Oncology Center of Excellence issues Letter of Support</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Initial scoping of irAE phenotypes and infrastructure gaps</div>
-        </li>
-      
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Launch of the irAE Program by CEORT's Project Data Sphere</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">FDA Oncology Center of Excellence issues Letter of Support</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Initial scoping of irAE phenotypes and infrastructure gaps</div>
+          </li>
         </ul>
       </div>
     
       <div id="content-2018" class="timeline-content" style="display: none;">
         <h2 style="color: #333333; margin-top: 0;">2018 – Early Clinical Focus and Field Definition</h2>
         <ul style="list-style: none; padding: 0;">
-    
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Immune-Related Myocarditis Workshop (Dec 2017)</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Consensus publication in The Oncologist (2018)</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Expansion of collaborative engagement with specialists</div>
-        </li>
-      
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Immune-Related Myocarditis Workshop (Dec 2017)</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Consensus publication in The Oncologist (2018)</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Expansion of collaborative engagement with specialists</div>
+          </li>
         </ul>
       </div>
     
       <div id="content-2019" class="timeline-content" style="display: none;">
         <h2 style="color: #333333; margin-top: 0;">2019 – Regulatory and Research-Driven Scaling</h2>
         <ul style="list-style: none; padding: 0;">
-    
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">FDA–PDS irAE Symposium</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Initiation of Delphi-based consensus processes</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Mapping of knowledge gaps across regulatory reporting</div>
-        </li>
-      
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">FDA–PDS irAE Symposium</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Initiation of Delphi-based consensus processes</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Mapping of knowledge gaps across regulatory reporting</div>
+          </li>
         </ul>
       </div>
     
       <div id="content-2020-2021" class="timeline-content" style="display: none;">
         <h2 style="color: #333333; margin-top: 0;">2020-2021 – Definition Development and Real-World Infrastructure</h2>
         <ul style="list-style: none; padding: 0;">
-    
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Structured workgroups for consensus definitions</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Emphasis on real-world evidence strategy</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">First JITC publication (2021): Neurologic irAE definitions</div>
-        </li>
-      
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Structured workgroups for consensus definitions</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Emphasis on real-world evidence strategy</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">First JITC publication (2021): Neurologic irAE definitions</div>
+          </li>
         </ul>
       </div>
     
       <div id="content-2022-2023" class="timeline-content" style="display: none;">
         <h2 style="color: #333333; margin-top: 0;">2022-2023 – Standardization and Coding Advancement</h2>
         <ul style="list-style: none; padding: 0;">
-    
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Finalization of ICD-10-CM and MedDRA coding updates</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Crosswalk development for trial CRFs</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Engagement with payers, clinicians, and regulators</div>
-        </li>
-      
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Finalization of ICD-10-CM and MedDRA coding updates</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Crosswalk development for trial CRFs</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Engagement with payers, clinicians, and regulators</div>
+          </li>
         </ul>
       </div>
     
       <div id="content-2024" class="timeline-content" style="display: none;">
         <h2 style="color: #333333; margin-top: 0;">2024 – Institutionalization and Ecosystem Expansion</h2>
         <ul style="list-style: none; padding: 0;">
-    
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">irAE Consortium Think Tank at Cleveland Clinic</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Formation of ASPIRE and STORIES entities</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">JCO publication on AI/LLM-based irAE detection</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Approval of 4 new ICD-10-CM codes for irAEs</div>
-        </li>
-      
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">irAE Consortium Think Tank at Cleveland Clinic</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Formation of ASPIRE and STORIES entities</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">JCO publication on AI/LLM-based irAE detection</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Approval of 4 new ICD-10-CM codes for irAEs</div>
+          </li>
         </ul>
       </div>
     
       <div id="content-2025" class="timeline-content" style="display: none;">
         <h2 style="color: #333333; margin-top: 0;">2025 – Recognition and Formal Integration</h2>
         <ul style="list-style: none; padding: 0;">
-    
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">ASCO designates ASPIRE as a Community of Practice</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">ASPIRE session at ASCO Annual Meeting (May 30)</div>
-        </li>
-      
-        <li style="display: flex; margin-bottom: 15px;">
-          <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
-          <div style="margin-left: 15px;">Ongoing work on CRF harmonization, biomarkers, and AI tools</div>
-        </li>
-      
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">ASCO designates ASPIRE as a Community of Practice</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">ASPIRE session at ASCO Annual Meeting (May 30)</div>
+          </li>
+        
+          <li style="display: flex; margin-bottom: 15px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: #C6A94C; margin-top: 5px; flex-shrink: 0;"></div>
+            <div style="margin-left: 15px;">Ongoing work on CRF harmonization, biomarkers, and AI tools</div>
+          </li>
         </ul>
       </div>
-    
-      </div>
     </div>
-"""
-
-# Display the timeline
-display(HTML(timeline_html))
+  </div>
+  <!-- Timeline HTML ends here -->
+</body>
+</html>
